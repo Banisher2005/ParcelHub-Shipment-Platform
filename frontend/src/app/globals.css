@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────
+   ParcelHub Design System
+   Dark-first, premium, minimal — inspired by Linear & Arc
+   ───────────────────────────────────────────────────────── */
+
+@theme inline {
+  /* ── Base Colors ── */
+  --color-background: oklch(0.145 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.178 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-popover: oklch(0.178 0 0);
+  --color-popover-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.269 0 0);
+  --color-muted-foreground: oklch(0.708 0 0);
+  --color-border: oklch(0.3 0 0);
+  --color-input: oklch(0.269 0 0);
+  --color-ring: oklch(0.556 0.215 252);
+
+  /* ── Brand ── */
+  --color-primary: oklch(0.646 0.215 252);
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-secondary: oklch(0.269 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  --color-accent: oklch(0.269 0 0);
+  --color-accent-foreground: oklch(0.985 0 0);
+
+  /* ── Semantic ── */
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.985 0 0);
+
+  /* ── Status Colors ── */
+  --color-status-ordered: oklch(0.646 0.215 252);
+  --color-status-picked-up: oklch(0.627 0.225 303);
+  --color-status-in-transit: oklch(0.769 0.188 70.08);
+  --color-status-customs: oklch(0.606 0.21 292);
+  --color-status-out-for-delivery: oklch(0.648 0.2 145);
+  --color-status-delivered: oklch(0.723 0.219 149.579);
+  --color-status-delayed: oklch(0.637 0.237 25.331);
+  --color-status-exception: oklch(0.577 0.245 27.325);
+  --color-status-unknown: oklch(0.552 0 0);
+
+  /* ── Radius ── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  /* ── Typography ── */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── Shadows ── */
+  --shadow-subtle: 0 1px 2px 0 oklch(0 0 0 / 0.3);
+  --shadow-card: 0 2px 8px 0 oklch(0 0 0 / 0.2), 0 1px 2px 0 oklch(0 0 0 / 0.3);
+  --shadow-glow: 0 0 20px oklch(0.646 0.215 252 / 0.15);
+}
+
+/* ─── Base Layer ──────────────────────────────────────── */
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0 0);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0 0);
+}
+
+/* ─── Glass Effect ──────────────────────────────────── */
+
+.glass {
+  background: oklch(0.178 0 0 / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid oklch(1 0 0 / 0.06);
+}
+
+.glass-subtle {
+  background: oklch(0.178 0 0 / 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid oklch(1 0 0 / 0.04);
+}
+
+/* ─── Gradient Overlays ─────────────────────────────── */
+
+.gradient-mesh {
+  background:
+    radial-gradient(at 20% 0%, oklch(0.646 0.215 252 / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, oklch(0.627 0.225 303 / 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, oklch(0.769 0.188 70.08 / 0.04) 0px, transparent 50%);
+}
+
+/* ─── Animations ────────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.646 0.215 252 / 0.2); }
+  50% { box-shadow: 0 0 12px 4px oklch(0.646 0.215 252 / 0.1); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(0.269 0 0) 0%,
+    oklch(0.35 0 0) 50%,
+    oklch(0.269 0 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+/* ─── Selection ─────────────────────────────────────── */
+
+::selection {
+  background: oklch(0.646 0.215 252 / 0.3);
+  color: var(--color-foreground);
+}
